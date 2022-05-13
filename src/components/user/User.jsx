@@ -1,15 +1,18 @@
 import { Link, useParams } from "react-router-dom";
 import { useUser } from "../../hooks/use-user";
 import { useUserPosts } from "../../hooks/use-user-posts";
+import Spinner from "../spinner/Spinner";
 
 export default function User() {
     const params = useParams();
-    const { user } = useUser(params.id);
-    const { posts } = useUserPosts(params.id);
+    const { user, loading } = useUser(params.id);
+    const { posts, loading: postsLoading } = useUserPosts(params.id);
 
     return (
         <>
-            {user && posts && (
+            {loading || postsLoading ? (
+                <Spinner />
+            ) : (
                 <>
                     <h1 className="text-center mb-5">{user.username}</h1>
                     <div className="container">
