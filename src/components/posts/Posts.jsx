@@ -1,4 +1,5 @@
 import { useNavigate } from "react-router-dom";
+
 import { usePosts } from "../../hooks/use-posts";
 import Spinner from "../spinner/Spinner";
 

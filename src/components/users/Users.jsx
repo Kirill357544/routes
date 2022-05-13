@@ -1,4 +1,5 @@
 import { useNavigate } from "react-router-dom";
+
 import { useUsers } from "../../hooks/use-users";
 import Spinner from "../spinner/Spinner";
 

@@ -1,4 +1,5 @@
 import { useState, useEffect } from "react";
+
 import { getPosts } from "../api/post-api";
 
 export function usePosts() {

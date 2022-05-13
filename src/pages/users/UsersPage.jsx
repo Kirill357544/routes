@@ -1,5 +1,6 @@
-import Users from "../../components/users/Users";
 import { Outlet, useParams } from "react-router-dom";
+
+import Users from "../../components/users/Users";
 
 export default function UsersPage() {
     const params = useParams();

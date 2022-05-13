@@ -1,6 +1,6 @@
-import { Outlet } from "react-router-dom";
+import { useParams, Outlet } from "react-router-dom";
+
 import Posts from "../../components/posts/Posts";
-import { useParams } from "react-router-dom";
 
 export default function PostsPage() {
     const params = useParams();

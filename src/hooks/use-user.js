@@ -1,4 +1,5 @@
 import { useState, useEffect } from "react";
+
 import { getUser } from "../api/user-api";
 
 export function useUser(userId) {

@@ -1,5 +1,6 @@
 import { Link, useParams } from "react-router-dom";
 import { useUser } from "../../hooks/use-user";
+
 import { useUserPosts } from "../../hooks/use-user-posts";
 import Spinner from "../spinner/Spinner";
 
