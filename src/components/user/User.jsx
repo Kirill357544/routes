@@ -1,9 +1,11 @@
 import { Link, useParams } from "react-router-dom";
 import { useUser } from "../../hooks/use-user";
+import { useUserPosts } from "../../hooks/use-user-posts";
 
 export default function User() {
     const params = useParams();
-    const { user, posts } = useUser(params.id);
+    const { user } = useUser(params.id);
+    const { posts } = useUserPosts(params.id);
 
     return (
         <>
