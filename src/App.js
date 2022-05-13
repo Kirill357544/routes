@@ -8,6 +8,8 @@ import UsersPage from "./pages/users/UsersPage";
 import UserPage from "./pages/user/UserPage";
 import PostPage from "./pages/post/PostPage";
 
+window.BASE_URL = "https://jsonplaceholder.typicode.com";
+
 export default function App() {
     return (
         <Routes>

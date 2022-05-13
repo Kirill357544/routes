@@ -1,25 +1,9 @@
-import { useEffect, useState } from "react";
 import { Link, useParams } from "react-router-dom";
+import { usePost } from "../../hooks/use-post";
 
 export default function Post() {
-    const [post, setPost] = useState(null);
-    const [user, setUser] = useState(null);
     const params = useParams();
-
-    function getPost() {
-        fetch(`https://jsonplaceholder.typicode.com/posts/${params.id}`)
-            .then((post) => post.json())
-            .then((post) => {
-                setPost(post);
-                return fetch(`https://jsonplaceholder.typicode.com/users/${post.userId}`);
-            })
-            .then((user) => user.json())
-            .then((user) => setUser(user));
-    }
-
-    useEffect(() => {
-        getPost();
-    }, []);
+    const { post, user } = usePost(params.id);
 
     return (
         <>

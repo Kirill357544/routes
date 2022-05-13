@@ -1,19 +1,9 @@
-import { useState, useEffect } from "react";
 import { useNavigate } from "react-router-dom";
+import { useUsers } from "../../hooks/use-users";
 
 export default function Users() {
-    const [users, setUsers] = useState(null);
     const navigate = useNavigate();
-
-    function getUsers() {
-        fetch("https://jsonplaceholder.typicode.com/users")
-            .then((users) => users.json())
-            .then((users) => setUsers(users));
-    }
-
-    useEffect(() => {
-        getUsers();
-    }, []);
+    const { users } = useUsers();
 
     function handleClick(id) {
         navigate(`/users/${id}`);

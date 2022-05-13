@@ -1,19 +1,9 @@
-import { useState, useEffect } from "react";
 import { useNavigate } from "react-router-dom";
+import { usePosts } from "../../hooks/use-posts";
 
 export default function Posts() {
-    const [posts, setPosts] = useState([]);
     const navigate = useNavigate();
-
-    function getPosts() {
-        fetch("https://jsonplaceholder.typicode.com/posts")
-            .then((posts) => posts.json())
-            .then((posts) => setPosts(posts));
-    }
-
-    useEffect(() => {
-        getPosts();
-    }, []);
+    const { posts } = usePosts();
 
     function handleClick(id) {
         navigate(`/posts/${id}`);

@@ -1,25 +1,9 @@
-import { useState, useEffect } from "react";
 import { Link, useParams } from "react-router-dom";
+import { useUser } from "../../hooks/use-user";
 
 export default function User() {
-    const [user, setUser] = useState(null);
-    const [posts, setPosts] = useState(null);
     const params = useParams();
-
-    function getUser() {
-        fetch(`https://jsonplaceholder.typicode.com/users/${params.id}`)
-            .then((user) => user.json())
-            .then((user) => {
-                setUser(user);
-                return fetch(`https://jsonplaceholder.typicode.com/posts?userId=${user.id}`);
-            })
-            .then((posts) => posts.json())
-            .then((posts) => setPosts(posts));
-    }
-
-    useEffect(() => {
-        getUser();
-    }, []);
+    const { user, posts } = useUser(params.id);
 
     return (
         <>
