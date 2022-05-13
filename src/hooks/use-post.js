@@ -4,6 +4,7 @@ import { getPost, getPostUser } from "../api/post-api";
 export function usePost(postId) {
     const [post, setPost] = useState(null);
     const [user, setUser] = useState(null);
+    const [loading, setLoading] = useState(true);
 
     useEffect(() => {
         getPost(postId)
@@ -11,8 +12,11 @@ export function usePost(postId) {
                 setPost(post);
                 return getPostUser(post.userId);
             })
-            .then((user) => setUser(user));
+            .then((user) => {
+                setUser(user);
+                setLoading(false);
+            });
     }, [postId]);
 
-    return { post, user };
+    return { post, user, loading };
 }

@@ -1,13 +1,16 @@
 import { Link, useParams } from "react-router-dom";
 import { usePost } from "../../hooks/use-post";
+import Spinner from "../spinner/Spinner";
 
 export default function Post() {
     const params = useParams();
-    const { post, user } = usePost(params.id);
+    const { post, user, loading } = usePost(params.id);
 
     return (
         <>
-            {post && user && (
+            {loading ? (
+                <Spinner />
+            ) : (
                 <>
                     <h1 className="text-center mb-5">{post.title}</h1>
                     <div className="container">
