@@ -1,6 +1,7 @@
 import { useState, useEffect } from "react";
 
-import { getPost, getPostUser } from "../api/post-api";
+import { getPost } from "../api/post-api";
+import { getUser } from "../api/user-api";
 
 export function usePost(postId) {
     const [post, setPost] = useState(null);
@@ -11,7 +12,7 @@ export function usePost(postId) {
         getPost(postId)
             .then((post) => {
                 setPost(post);
-                return getPostUser(post.userId);
+                return getUser(post.userId);
             })
             .then((user) => {
                 setUser(user);
